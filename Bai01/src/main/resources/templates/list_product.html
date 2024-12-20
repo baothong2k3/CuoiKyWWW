@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/addProduct">Add Product</a>
+<br><br>
+<form method="get" action="/list">
+    <label for="category">Select category</label>
+    <select id="category" name="categoryId" onchange="this.form.submit()">
+        <option value="">--Select Category--</option>
+        <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select>
+    <button onclick="window.location.href='/list'">Clear Filter</button>
+</form>
+<form method="get" action="/search">
+    <label for="search">Search Products:</label>
+    <input type="text" id="search" name="query" placeholder="ID, Name, Code, Price or Register Date(yyyy-mm-dd)"
+           size="45">
+    <button type="submit">Search</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Description</th>
+        <th>Register Date</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.code}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.registerDate}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.quantity}"></td>
+        <td>
+            <a th:href="@{/view/{id}(id=${product.id})}">View</a>
+            <a th:href="@{/edit/{id}(id=${product.id})}">Edit</a>
+            <a th:href="@{/delete/{id}(id=${product.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
