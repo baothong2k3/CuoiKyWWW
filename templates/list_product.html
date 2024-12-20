@@ -7,20 +7,6 @@
 <body>
 <a href="/addProduct">Add Product</a>
 <br><br>
-<form method="get" action="/list">
-    <label for="category">Select category</label>
-    <select id="category" name="categoryId" onchange="this.form.submit()">
-        <option value="">--Select Category--</option>
-        <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-    </select>
-    <button onclick="window.location.href='/list'">Clear Filter</button>
-</form>
-<form method="get" action="/search">
-    <label for="search">Search Products:</label>
-    <input type="text" id="search" name="query" placeholder="ID, Name, Code, Price or Register Date(yyyy-mm-dd)"
-           size="45">
-    <button type="submit">Search</button>
-</form>
 <table>
     <thead>
     <tr>
@@ -51,5 +37,18 @@
     </tr>
     </tbody>
 </table>
+<form method="get" action="/list">
+    <label for="category">Select category</label>
+    <select id="category" name="categoryId" onchange="this.form.submit()">
+        <option value="">--Select Category--</option>
+        <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select>
+    <button onclick="window.location.href='/list'">Clear Filter</button>
+</form>
+<form method="get" action="/search">
+    <label for="search">Search Products:</label>
+    <input type="text" id="search" name="query" placeholder="ID, Name, Code, Price or Register Date(yyyy-mm-dd)" size="45">
+    <button type="submit">Search</button>
+</form>
 </body>
 </html>

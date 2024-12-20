@@ -61,6 +61,7 @@ public class ProductImpl implements ProductService {
             existingProduct.setPrice(product.getPrice());
             existingProduct.setCategory(product.getCategory());
             existingProduct.setQuantity(product.getQuantity());
+            existingProduct.setRegisterDate(product.getRegisterDate());
             return productDAO.save(existingProduct);
         }
         return null;

@@ -30,8 +30,6 @@ public interface ProductDAO extends JpaRepository<Product, Integer> {
 
     Product findById(int id);
 
-    boolean existsById(int id);
-
     void deleteById(int id);
 
     List<Product> findProductByCategory_Id(int id);

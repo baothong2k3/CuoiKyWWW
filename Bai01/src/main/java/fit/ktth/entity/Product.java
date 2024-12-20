@@ -14,9 +14,8 @@ import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-
 @Entity
-@Table
+@Table(name = "PRODUCT")
 public class Product {
 
     @Id
